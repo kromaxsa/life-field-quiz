@@ -431,8 +431,8 @@
       <span class="zh">請完成以下表單，我們將為你準備個人化的生命場能量快照與滋養建議，並不定期分享 TimeWaver 應用的健康資訊。</span>
     </p>
 
-    <div class="form-error" id="formError">Please complete the required fields (name and a valid email) and accept the consent.
-      <span class="zh">請完成必填欄位（姓名與有效的電子郵件）並勾選同意條款。</span>
+    <div class="form-error" id="formError">Please complete the required fields (name, a valid email, and occupation) and accept the consent.
+      <span class="zh">請完成必填欄位（姓名、有效的電子郵件與職業）並勾選同意條款。</span>
     </div>
 
     <form class="lead-form" id="leadForm" novalidate>
@@ -464,8 +464,8 @@
         <label for="f-city">City <span class="zh">城市</span></label>
         <input type="text" id="f-city" name="city" />
       </div>
-      <div class="field optional">
-        <label for="f-occupation">Occupation <span class="zh">職業</span></label>
+      <div class="field">
+        <label for="f-occupation">Occupation * <span class="zh">職業 *</span></label>
         <input type="text" id="f-occupation" name="occupation" />
       </div>
       <div class="field optional">
@@ -512,7 +512,7 @@
       <span class="zh">你的生命場能量快照即將送達。</span>
     </p>
     <p class="thanks-body">We have received your details and will send your personal snapshot report with nourishment suggestions shortly. May each day feel a little more balanced and a little brighter than the last.
-      <span class="zh">我們已收到你的資料，將盡快寄送你的個人生命場能量快照報告與滋養建議。願你每一天都比前一天更平衡、更明亮一些。</span>
+      <span class="zh">我們已收到你的資料，將盡快寄送你的個人生命場能量快照報告與調理建議。願你每一天都比前一天更平衡、更明亮一些。</span>
     </p>
     <div class="btn-row">
       <button class="btn" id="viewResultsBtn">View my results now →<span class="zh">立即查看我的結果 →</span></button>
@@ -974,14 +974,10 @@
     Object.keys(FIELDS).forEach(k => {
       const f = FIELDS[k];
       const cBand = bandFor(COHERENCE_BANDS, pct[k]);
-      const chakraLine = f.chakraEn
-        ? '<p class="chakra">' + f.chakraEn + ' chakra<span class="zh">' + f.chakraZh + '</span></p>'
-        : '';
       const row = document.createElement('div');
       row.className = 'bar-row';
       row.innerHTML =
         '<div class="bar-label"><span class="name"><span class="dot" style="background:' + f.color + '"></span>' + f.en + '<span class="zh">' + f.zh + '</span></span><span style="color:' + cBand.color + ';font-weight:600;">' + pct[k] + '%</span></div>' +
-        chakraLine +
         '<div class="bar-track"><div class="bar-fill" style="width:' + pct[k] + '%;background:' + cBand.color + '"></div></div>';
       barsWrap.appendChild(row);
     });
@@ -1033,11 +1029,12 @@
 
     const name = document.getElementById('f-name').value.trim();
     const email = document.getElementById('f-email').value.trim();
+    const occupation = document.getElementById('f-occupation').value.trim();
     const consent = document.getElementById('f-consent').checked;
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const errorBox = document.getElementById('formError');
 
-    if(!name || !emailOk || !consent){
+    if(!name || !emailOk || !occupation || !consent){
       errorBox.classList.add('show');
       errorBox.scrollIntoView({behavior:'smooth', block:'center'});
       return;
