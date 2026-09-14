@@ -274,11 +274,20 @@
 
   /* ---------- Radar chart ---------- */
   .radar-wrap{ width:100%; display:flex; justify-content:center; margin-bottom:22px; }
-  .radar-wrap svg{ width:100%; max-width:360px; height:auto; overflow:visible; }
+  .radar-wrap svg{ width:100%; max-width:540px; height:auto; overflow:visible; }
   .radar-wrap.blurred svg{ filter:blur(5px); opacity:0.8; }
   .radar-legend{ display:flex; flex-wrap:wrap; gap:8px 14px; justify-content:center; margin-bottom:8px; }
   .radar-legend span{ font-size:0.72rem; display:flex; align-items:center; gap:5px; color:var(--ink-soft); }
   .radar-legend .dot{ width:8px; height:8px; border-radius:50%; display:inline-block; }
+
+  /* ---------- Print / Save as PDF ---------- */
+  @media print{
+    body{ background:#fff !important; background-image:none !important; }
+    #downloadBtn{ display:none !important; }
+    .app{ max-width:100% !important; padding:0 24px !important; }
+    .radar-wrap svg{ max-width:420px !important; }
+    .section-block, .radar-wrap, .bars, .disclaimer{ break-inside:avoid; }
+  }
 
   .unlock-badge{
     display:inline-flex; align-items:center; gap:6px; background:var(--card);
@@ -545,7 +554,7 @@
       <p id="adviceText"></p>
     </div>
 
-    <button class="btn" style="margin-top:10px;">Download your results →<span class="zh">下載你的結果 →</span></button>
+    <button class="btn" id="downloadBtn" style="margin-top:10px;">Download your results →<span class="zh">下載你的結果 →</span></button>
 
     <p class="disclaimer">These results are for self-reflection, inspired by TimeWaver Aura Photography and Quantum Longevity concepts. Statements about the TimeWaver Information Field have not been verified by independent scientific research, and this quiz is not a medical diagnosis, treatment, or financial advice.
       <span class="zh">此結果僅供自我覺察參考，靈感源自 TimeWaver 光環照相與量子長壽概念。關於 TimeWaver 訊息場的相關說法尚未經獨立科學研究證實，本測驗並非醫療診斷、治療或財務建議。</span>
@@ -1009,6 +1018,11 @@
     Object.keys(FIELDS).forEach(k => { nf[k].value = pct[k] + '%'; });
     nf.stress_resilience.value = stressPct + '%';
   }
+
+  // ---------------- Download results as PDF ----------------
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    window.print();
+  });
 
   // ---------------- Lead form submit ----------------
   document.getElementById('leadForm').addEventListener('submit', function(e){
