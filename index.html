@@ -273,8 +273,8 @@
   }
 
   /* ---------- Radar chart ---------- */
-  .radar-wrap{ width:100%; display:flex; justify-content:center; margin-bottom:22px; }
-  .radar-wrap svg{ width:100%; max-width:540px; height:auto; overflow:visible; }
+  .radar-wrap{ width:100vw; max-width:1080px; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw); display:flex; justify-content:center; margin-bottom:22px; }
+  .radar-wrap svg{ width:100%; max-width:1080px; height:auto; overflow:visible; padding:0 8px; }
   .radar-wrap.blurred svg{ filter:blur(5px); opacity:0.8; }
   .radar-legend{ display:flex; flex-wrap:wrap; gap:8px 14px; justify-content:center; margin-bottom:8px; }
   .radar-legend span{ font-size:0.72rem; display:flex; align-items:center; gap:5px; color:var(--ink-soft); }
@@ -336,7 +336,7 @@
   <form name="quiz-leads" method="POST" id="dataForm" class="hidden-field" aria-hidden="true">
     <input name="bot-field" style="display:none" tabindex="-1" autocomplete="off" />
     <input name="name" /><input name="email" /><input name="phone" /><input name="age" /><input name="city" />
-    <input name="scan_preference" /><input name="message" /><input name="consent" />
+    <input name="occupation" /><input name="scan_preference" /><input name="message" /><input name="consent" />
     <input name="overall_score" /><input name="top_field" /><input name="lowest_field" />
     <input name="unity" /><input name="clarity" /><input name="social" /><input name="vitality" />
     <input name="emotion" /><input name="confidence" /><input name="family" /><input name="finance" />
@@ -347,10 +347,10 @@
   <section class="screen active" id="screen-intro">
     <div class="aura" aria-hidden="true"></div>
     <p class="eyebrow">Inspired by TimeWaver · Aura &amp; Quantum Longevity
-      <span class="zh">靈感源自 TimeWaver · 光環與量子長壽概念</span>
+      <span class="zh">應用源自 TimeWaver · 光環與量子長壽概念</span>
     </p>
     <h1 class="hero">Your Self-Discovery Check: How Aligned Are Your Life Fields?
-      <span class="zh">自我探索檢測：你的生命領域有多和諧？</span>
+      <span class="zh">自我探索檢測：你的生命場能量有多和諧？</span>
     </h1>
 
     <div class="hero-copy">
@@ -364,7 +364,7 @@
         <span class="zh">這份僅需 3 分鐘、共 15 題的「內在和諧檢測」不會為你「診斷」，而是為你「照亮」。它能找出那些悄悄消耗你能量的隱藏摩擦（例如紛亂的思緒或內心的批判聲音）。</span>
       </p>
       <p>Answer the questions below to unlock your personalized Life Field Snapshot.
-        <span class="zh">回答以下問題，解鎖屬於你的生命領域快照。</span>
+        <span class="zh">回答以下問題，解鎖屬於你的生命場能量快照。</span>
       </p>
       <p class="ps">P.S. Your results will highlight your single biggest lever for growth right now. (If Clarity is your lowest score, you'll be amazed at how deeply your mind and immune system are linked...)
         <span class="zh">附註：你的結果將揭示目前最值得你關注的成長槓桿。（如果「清晰」是你最低的分數，你會驚訝於心智與免疫系統之間的緊密聯繫……）</span>
@@ -389,7 +389,7 @@
     </p>
 
     <p class="disclaimer">This quiz is a self-reflection tool for mind-body wellness, inspired by TimeWaver Aura and Quantum Longevity concepts. It is not a medical diagnosis, treatment, or financial advice.
-      <span class="zh">本測驗為身心自我覺察工具，靈感源自 TimeWaver 光環與量子長壽概念，並非醫療診斷、治療或財務建議。</span>
+      <span class="zh">本測驗為身心自我覺察工具，應用源自 TimeWaver 光環與量子長壽概念，並非醫療診斷、治療或財務建議。</span>
     </p>
   </section>
 
@@ -411,7 +411,7 @@
 
   <!-- ============ SCREEN 3: FORM PAGE (with blurred teaser chart) ============ -->
   <section class="screen" id="screen-lead">
-    <p class="eyebrow">Your Life Field Snapshot<span class="zh">你的生命領域快照</span></p>
+    <p class="eyebrow">Your Life Field Snapshot<span class="zh">你的生命場能量快照</span></p>
     <h2 class="lead-title" id="previewBandTitle" style="margin-bottom:14px;"></h2>
 
     <div class="radar-legend" id="radarLegendPreview"></div>
@@ -425,10 +425,10 @@
       <span class="zh">最後一步 · 就快好了</span>
     </p>
     <h2 class="lead-title">Receive your Life Field report
-      <span class="zh">收到你的生命領域報告</span>
+      <span class="zh">收到你的生命場能量報告</span>
     </h2>
     <p class="lead-sub">Complete the form below and we will prepare your personal Life Field Snapshot and nourishment suggestions, along with occasional TimeWaver-inspired wellness insights.
-      <span class="zh">請完成以下表單，我們將為你準備個人化的生命領域快照與滋養建議，並不定期分享 TimeWaver 靈感的健康資訊。</span>
+      <span class="zh">請完成以下表單，我們將為你準備個人化的生命場能量快照與滋養建議，並不定期分享 TimeWaver 應用的健康資訊。</span>
     </p>
 
     <div class="form-error" id="formError">Please complete the required fields (name and a valid email) and accept the consent.
@@ -465,6 +465,10 @@
         <input type="text" id="f-city" name="city" />
       </div>
       <div class="field optional">
+        <label for="f-occupation">Occupation <span class="zh">職業</span></label>
+        <input type="text" id="f-occupation" name="occupation" />
+      </div>
+      <div class="field optional">
         <label>Get your free Aura + Longevity scan with us <span class="zh">免費體驗我們的光環＋長壽掃描</span></label>
         <p style="font-size:0.8rem;color:var(--ink-soft);margin:-2px 0 8px;">Would you like to redeem it online or at the booth?
           <span class="zh" style="display:block;margin-top:2px;">你想要線上兌換，還是在攤位現場兌換？</span>
@@ -486,7 +490,7 @@
       <div class="consent-row">
         <input type="checkbox" id="f-consent" name="consent" />
         <label for="f-consent">I agree that my details may be collected and used to send my Life Field report and related wellness updates, and I understand I can request deletion at any time. *
-          <span class="zh">我同意我的資料可被蒐集並用於寄送我的生命領域報告及相關健康資訊，並了解我可隨時要求刪除。*</span>
+          <span class="zh">我同意我的資料可被蒐集並用於寄送我的生命場能量報告及相關健康資訊，並了解我可隨時要求刪除。*</span>
         </label>
       </div>
 
@@ -505,10 +509,10 @@
       <span class="zh">感謝你完成測驗</span>
     </h2>
     <p class="thanks-sub">Your Life Field Snapshot is on its way.
-      <span class="zh">你的生命領域快照即將送達。</span>
+      <span class="zh">你的生命場能量快照即將送達。</span>
     </p>
     <p class="thanks-body">We have received your details and will send your personal snapshot report with nourishment suggestions shortly. May each day feel a little more balanced and a little brighter than the last.
-      <span class="zh">我們已收到你的資料，將盡快寄送你的個人生命領域快照報告與滋養建議。願你每一天都比前一天更平衡、更明亮一些。</span>
+      <span class="zh">我們已收到你的資料，將盡快寄送你的個人生命場能量快照報告與滋養建議。願你每一天都比前一天更平衡、更明亮一些。</span>
     </p>
     <div class="btn-row">
       <button class="btn" id="viewResultsBtn">View my results now →<span class="zh">立即查看我的結果 →</span></button>
@@ -519,7 +523,7 @@
   <!-- ============ SCREEN 5: RESULTS ============ -->
   <section class="screen" id="screen-results">
     <div class="results-head">
-      <p class="eyebrow">Your Life Field Snapshot<span class="zh">你的生命領域快照</span></p>
+      <p class="eyebrow">Your Life Field Snapshot<span class="zh">你的生命場能量快照</span></p>
       <h2 id="bandTitle"></h2>
       <p class="lead-line">Overall coherence <span id="leadLineScore"></span>
         <span class="zh">整體和諧度 <span id="leadLineScoreZh"></span></span>
@@ -557,7 +561,7 @@
     <button class="btn" id="downloadBtn" style="margin-top:10px;">Download your results →<span class="zh">下載你的結果 →</span></button>
 
     <p class="disclaimer">These results are for self-reflection, inspired by TimeWaver Aura Photography and Quantum Longevity concepts. Statements about the TimeWaver Information Field have not been verified by independent scientific research, and this quiz is not a medical diagnosis, treatment, or financial advice.
-      <span class="zh">此結果僅供自我覺察參考，靈感源自 TimeWaver 光環照相與量子長壽概念。關於 TimeWaver 訊息場的相關說法尚未經獨立科學研究證實，本測驗並非醫療診斷、治療或財務建議。</span>
+      <span class="zh">此結果僅供自我覺察參考，應用源自 TimeWaver 光環照相與量子長壽概念。關於 TimeWaver 訊息場的相關說法尚未經獨立科學研究證實，本測驗並非醫療診斷、治療或財務建議。</span>
     </p>
   </section>
 
@@ -565,7 +569,7 @@
 
 <footer class="site-footer">
   <p>Aura &amp; Longevity Quiz — inspired by TimeWaver Aura &amp; Quantum Longevity concepts.
-    <span class="zh">光環與長壽測驗——靈感源自 TimeWaver 光環與量子長壽概念。</span>
+    <span class="zh">光環與長壽測驗——應用源自 TimeWaver 光環與量子長壽概念。</span>
   </p>
   <p>Statements related to TimeWaver Information Field technology have not been verified by independent scientific research. This quiz is for self-reflection and educational purposes only.
     <span class="zh">與 TimeWaver 訊息場技術相關的說法尚未經獨立科學研究證實。本測驗僅供自我覺察與教育用途。</span>
@@ -614,7 +618,7 @@
         {en:"I often feel like I'm putting on a show for others.", zh:"我常常覺得自己在為別人演戲。", v:2},
         {en:"I feel completely disconnected from what I actually want.", zh:"我感覺與自己真正想要的完全脫節。", v:1}
       ]},
-    { cat:'clarity', en:"How quiet is your mind when you need to make a decision?", zh:"當你需要做決定時，你的腦袋有多清靜？",
+    { cat:'clarity', en:"How quiet is your mind when you need to make a decision?", zh:"當你需要做決定時，你的思緒有多清晰？",
       opts:[
         {en:"Calm and clear—I know what I want.", zh:"平靜而清晰——我知道自己想要什麼。", v:4},
         {en:"A little noisy, but I can tune it out.", zh:"有點雜亂，但我能把它調小聲。", v:3},
@@ -642,7 +646,7 @@
         {en:"Awkward—I second-guess myself before speaking up.", zh:"有點尷尬——開口前總會反覆猶豫。", v:2},
         {en:"Almost impossible—I usually keep quiet.", zh:"幾乎不可能——我通常選擇沉默。", v:1}
       ]},
-    { cat:'vitality', en:"How does your body handle everyday stress, bad weather, or late nights?", zh:"你的身體如何應對日常壓力、天氣變化或熬夜？",
+    { cat:'vitality', en:"How does your body handle everyday stress, weather changes, or late nights?", zh:"你的身體如何應對日常壓力、氣候變化或熬夜？",
       opts:[
         {en:"I bounce back quickly every time.", zh:"每次都能很快恢復。", v:4},
         {en:"I handle it well, though I feel the impact.", zh:"應付得還不錯，但仍感受到影響。", v:3},
@@ -677,35 +681,35 @@
         {en:"It changes daily based on what others say or think.", zh:"會隨著他人的看法每天變化。", v:2},
         {en:"I constantly doubt if I'm good enough.", zh:"我經常懷疑自己是否足夠好。", v:1}
       ]},
-    { cat:'confidence', en:"When you make a mistake, how do you talk to yourself?", zh:"當你犯錯時，你會怎麼對自己說話？",
+    { cat:'confidence', en:"When you make a mistake, how do you talk to yourself?", zh:"當你犯錯時，你會如何與自己說話？",
       opts:[
         {en:"Kind and supportive: \"Lesson learned, moving on.\"", zh:"溫和且支持：「學到教訓了，繼續前進。」", v:4},
         {en:"Objective: \"Okay, that happened. What's next?\"", zh:"客觀理性：「好，事情發生了，接下來呢？」", v:3},
         {en:"Critical: \"You really should have known better.\"", zh:"批判：「你真的應該早就知道的。」", v:2},
         {en:"Harsh: \"You always mess things up.\"", zh:"嚴苛：「你總是把事情搞砸。」", v:1}
       ]},
-    { cat:'family', en:"How does the atmosphere in your home feel right now?", zh:"你目前家中的氛圍感覺如何？",
+    { cat:'family', en:"How does the atmosphere in your home feel right now?", zh:"你覺得現在家裡的氛圍如何？",
       opts:[
         {en:"Peaceful and grounded—it's my safe space.", zh:"平靜而穩定——那是我的安全基地。", v:4},
         {en:"Mostly calm, with occasional tension.", zh:"大致平靜，偶爾有些緊張。", v:3},
         {en:"Noticeably tense or stressed.", zh:"明顯感到緊張或有壓力。", v:2},
         {en:"Chaotic—it's hard to relax there.", zh:"混亂——很難在那裡放鬆。", v:1}
       ]},
-    { cat:'finance', en:"Putting exact numbers aside, how does your financial life feel right now?", zh:"先不談具體數字，你目前的財務生活感覺如何？",
+    { cat:'finance', en:"Putting exact numbers aside, how does your financial life feel right now?", zh:"拋開具體數字不談，你對於自己現在的財務狀況感覺如何？",
       opts:[
         {en:"Safe and abundant—I feel secure.", zh:"安全且充裕——我感到很有安全感。", v:4},
         {en:"Stable—I'm managing things well.", zh:"穩定——我把事情處理得很好。", v:3},
         {en:"Anxious—I worry about money often.", zh:"焦慮——我常為錢感到擔心。", v:2},
         {en:"Heavy—it feels like a constant weight on my chest.", zh:"沉重——像是壓在胸口上的一塊石頭。", v:1}
       ]},
-    { cat:'vitality', en:"On a typical day, where does your physical energy level sit?", zh:"在一個普通的日子裡，你的體能狀態大概是什麼水平？",
+    { cat:'vitality', en:"On a typical day, where does your physical energy level sit?", zh:"在一個普通的日子裡，你的身體能量狀態大概是什麼水平？",
       opts:[
         {en:"High and steady all day long.", zh:"整天都維持在高且穩定的水平。", v:4},
         {en:"Good, with a small afternoon slump.", zh:"還不錯，午後會稍微低落。", v:3},
         {en:"Unpredictable—lots of sudden highs and lows.", zh:"難以預測——時常忽高忽低。", v:2},
         {en:"Low voltage—I struggle just to get through the basics.", zh:"電力低落——連基本的事都要費力完成。", v:1}
       ]},
-    { cat:'unity', en:"How connected do you feel to your life's bigger picture or purpose?", zh:"你對人生的整體方向或目標，感受到多少連結？",
+    { cat:'unity', en:"How connected do you feel to your life's bigger picture or purpose?", zh:"你覺得自己與人生的整體方向或目標有多大的連結？",
       opts:[
         {en:"Deeply connected—I know exactly why I'm here.", zh:"深刻連結——我清楚知道自己為何而來。", v:4},
         {en:"Fairly connected—I have a clear general direction.", zh:"相當連結——我有清楚的大方向。", v:3},
@@ -750,9 +754,9 @@
   };
 
   const BANDS = [
-    {min:85, en:"Your life fields are radiant and coherent", zh:"你的生命領域光彩且和諧", color:'#4ade80'},
-    {min:70, en:"Your life fields are warm and flowing", zh:"你的生命領域溫暖且流動", color:'#22d3ee'},
-    {min:55, en:"Your life fields are steady, with room to awaken", zh:"你的生命領域穩定，仍有覺醒的空間", color:'#facc15'},
+    {min:85, en:"Your life fields are radiant and coherent", zh:"你的生命場能量光彩且和諧", color:'#4ade80'},
+    {min:70, en:"Your life fields are warm and flowing", zh:"你的生命場能量溫暖且流動", color:'#22d3ee'},
+    {min:55, en:"Your life fields are steady, with room to awaken", zh:"你的生命場能量穩定，仍有覺醒的空間", color:'#facc15'},
     {min:40, en:"Some fields are calling for care", zh:"有些領域正呼喚著你的關注", color:'#fb923c'},
     {min:0,  en:"It is time to nourish yourself", zh:"現在是滋養自己的時候了", color:'#f87171'}
   ];
@@ -894,10 +898,9 @@
     legendId = legendId || 'radarLegend';
     const keys = Object.keys(FIELDS); // 9 axes, incl. Stress
     const n = keys.length;
-    // Generous canvas margin relative to the plotted radius: even the longest label
-    // ("Confidence", anchored to extend outward) keeps a wide buffer from the SVG edge,
-    // so nothing clips regardless of browser font-metric differences.
-    const size = 520, cx = size/2, cy = size/2, maxR = 92;
+    // Tighter canvas margin: the plotted radius fills most of the canvas while still
+    // leaving enough buffer for the longest label ("Confidence") to avoid clipping.
+    const size = 520, cx = size/2, cy = size/2, maxR = 140;
     const levels = [0.25, 0.5, 0.75, 1];
     const angleFor = i => -Math.PI/2 + i * (2*Math.PI/n);
     const pt = (i, frac) => {
@@ -1047,6 +1050,7 @@
     nf.phone.value = document.getElementById('f-phone').value;
     nf.age.value = document.getElementById('f-age').value;
     nf.city.value = document.getElementById('f-city').value;
+    nf.occupation.value = document.getElementById('f-occupation').value;
     const scanChoice = document.querySelector('input[name="scan_preference"]:checked');
     nf.scan_preference.value = scanChoice ? scanChoice.value : '';
     nf.message.value = document.getElementById('f-message').value;
